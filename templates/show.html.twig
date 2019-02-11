@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1> Les stations vélib disponibles </h1>
+</div>
+<div class="container">
+    <div class="row">
+    {% for velo in velib %}
+    <div class="col-3 mb-5" >
+    <div class="card text-center">
+        <h5 class="card-header"> Station : {{velo.stationId}} </h5>
+    <div class="card-body">
+        <h2 class="card-title text-primary ">  {{velo.name}} </h2>
+        <h4 class="card-text text-success "> {{velo.numBikesAvailable}} Vélos</h4>
+        <p class="card-text "> {{velo.numDocksAvailable}} Quais disponibles</p>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    <div class="pagination">
+        {{ knp_pagination_render(velib) }}
+    </div>
+</div>
+{% endblock %}
